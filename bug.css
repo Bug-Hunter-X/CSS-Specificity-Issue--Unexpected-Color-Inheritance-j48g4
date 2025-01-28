@@ -1,0 +1,25 @@
+The following CSS code snippet demonstrates an uncommon bug related to specificity and inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; /* This rule is intended to override the color of paragraphs within divs */
+}
+
+.special p {
+  color: purple; /* This rule is intended to override the color of paragraphs with class 'special' within divs */
+}
+
+.special div p {
+  color: yellow; /* This rule is intended to override the color of paragraphs within divs with class 'special' */
+}
+```
+
+The unexpected behavior occurs when you have nested elements with conflicting specificity.  While the intention is clear, the order of specificity might not yield the expected result. Depending on the exact HTML structure, the `color` might not be the expected color.  This can be particularly tricky to debug because it involves a nuanced understanding of CSS specificity.
